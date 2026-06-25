@@ -18,7 +18,7 @@ public class Main {
             System.out.println("1. Margherita Pizza - Rs.200");
             System.out.println("2. Corn and Onion Pizza - Rs.230");
             System.out.println("3. Paneer Tikka Pizza - Rs.270");
-            System.out.println("4. Cheesy Chicken Pizza - Rs.280");
+            System.out.println("4. Cheesy Chicken Pizza - Rs.290");
             System.out.println("5. BBQ Chicken Pizza - Rs.300");
 
             // Margherita
@@ -40,13 +40,13 @@ public class Main {
                 Mcost = 200 * Mquantity;
 
                 if (Mextra.equalsIgnoreCase("Cheese")) {
-                    Mcost += 50;
+                    Mcost += 50 * Mquantity;
                 } else if (Mextra.equalsIgnoreCase("Olives")) {
-                    Mcost += 60;
+                    Mcost += 60 * Mquantity;
                 } else if (Mextra.equalsIgnoreCase("Pineapple")) {
-                    Mcost += 70;
+                    Mcost += 70 * Mquantity;
                 } else if (Mextra.equalsIgnoreCase("Mushrooms")) {
-                    Mcost += 80;
+                    Mcost += 80 * Mquantity;
                 } 
                 
             }
@@ -70,13 +70,13 @@ public class Main {
                 Corncost = 230 * Cornquantity;
 
                 if (Cornextra.equalsIgnoreCase("Cheese")) {
-                    Corncost += 50;
+                    Corncost += 50 * Cornquantity;
                 } else if (Cornextra.equalsIgnoreCase("Olives")) {
-                    Corncost += 60;
+                    Corncost += 60 * Cornquantity;
                 } else if (Cornextra.equalsIgnoreCase("Pineapple")) {
-                    Corncost += 70;
+                    Corncost += 70 * Cornquantity;
                 } else if (Cornextra.equalsIgnoreCase("Mushrooms")) {
-                    Corncost += 80;
+                    Corncost += 80 * Cornquantity;
                 }
             }
             
@@ -99,13 +99,13 @@ public class Main {
                 Pcost = 270 * Pquantity;
 
                 if (Pextra.equalsIgnoreCase("Cheese")) {
-                    Pcost += 50;
+                    Pcost += 50 * Pquantity;
                 } else if (Pextra.equalsIgnoreCase("Olives")) {
-                    Pcost += 60;
+                    Pcost += 60 * Pquantity;
                 } else if (Pextra.equalsIgnoreCase("Pineapple")) {
-                    Pcost += 70;
+                    Pcost += 70 * Pquantity;
                 } else if (Pextra.equalsIgnoreCase("Mushrooms")) {
-                    Pcost += 80;
+                    Pcost += 80 * Pquantity;
                 }
             }
             
@@ -128,13 +128,13 @@ public class Main {
                 Ccost = 290 * Cquantity;
 
                 if (Cextra.equalsIgnoreCase("Cheese")) {
-                    Ccost += 50;
+                    Ccost += 50 * Cquantity;
                 } else if (Cextra.equalsIgnoreCase("Olives")) {
-                    Ccost += 60;
+                    Ccost += 60 * Cquantity;
                 } else if (Cextra.equalsIgnoreCase("Pineapple")) {
-                    Ccost += 70;
+                    Ccost += 70 * Cquantity;
                 } else if (Cextra.equalsIgnoreCase("Mushrooms")) {
-                    Ccost += 80;
+                    Ccost += 80 * Cquantity;
                 }
             }
 
@@ -157,13 +157,13 @@ public class Main {
                 Bcost = 300 * Bquantity;
 
                 if (Bextra.equalsIgnoreCase("Cheese")) {
-                    Bcost += 50;
+                    Bcost += 50 * Bquantity;
                 } else if (Bextra.equalsIgnoreCase("Olives")) {
-                    Bcost += 60;
+                    Bcost += 60 * Bquantity;
                 } else if (Bextra.equalsIgnoreCase("Pineapple")) {
-                    Bcost += 70;
+                    Bcost += 70 * Bquantity;
                 } else if (Bextra.equalsIgnoreCase("Mushrooms")) {
-                    Bcost += 80;
+                    Bcost += 80 * Bquantity;
                 }
             }
 
@@ -172,25 +172,26 @@ public class Main {
             System.out.println("\n===== BILL =====");
 
             if (Mquantity > 0) {
-                System.out.println(Mquantity + " Margherita Pizza");
+                System.out.println(Mquantity + " Margherita Pizza - Rs." + Mcost);
             }
 
             if (Cornquantity > 0) {
-                System.out.println(Cornquantity + " Corn and Onion Pizza");
+                System.out.println(Cornquantity + " Corn and Onion Pizza - Rs." + Corncost);
             }
             
             if (Pquantity > 0) {
-                System.out.println(Pquantity + " Paneer Tikka Pizza");
+                System.out.println(Pquantity + " Paneer Tikka Pizza - Rs." + Pcost);
             }
             
             if (Cquantity > 0) {
-                System.out.println(Cquantity + " Cheesy Chicken Pizza");
+                System.out.println(Cquantity + " Cheesy Chicken Pizza - Rs." + Ccost);
             }
 
             if (Bquantity > 0) {
-                System.out.println(Bquantity + " BBQ Chicken Pizza");
+                System.out.println(Bquantity + " BBQ Chicken Pizza - Rs." + Bcost);
             }
 
+            System.out.println("-------------------------");
             System.out.println("Total Cost = Rs." + total);
             System.out.println("Thank you for ordering from Juhi's Pizza Shop!");
 
