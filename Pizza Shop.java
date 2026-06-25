@@ -33,7 +33,7 @@ public class Main {
 
                 System.out.print(
                     "Would you prefer any extra toppings?\n" +
-                    "Cheese (+50)\n" + "Olives(+60)" + "Paneer (+70)\n" + "Chicken (+80)\n" + "None\n" +"Enter topping: ");
+                    "Cheese (+50)\n" + "Olives(+60)\n" + "Pineapple (+70)\n" + "Mushrooms (+80)\n" + "None\n" +"Enter topping: ");
 
                 String Mextra = input.nextLine();
 
@@ -43,9 +43,9 @@ public class Main {
                     Mcost += 50;
                 } else if (Mextra.equalsIgnoreCase("Olives")) {
                     Mcost += 60;
-                } else if (Mextra.equalsIgnoreCase("Paneer")) {
+                } else if (Mextra.equalsIgnoreCase("Pineapple")) {
                     Mcost += 70;
-                } else if (Mextra.equalsIgnoreCase("Chicken")) {
+                } else if (Mextra.equalsIgnoreCase("Mushrooms")) {
                     Mcost += 80;
                 } 
                 
@@ -63,7 +63,7 @@ public class Main {
 
                 System.out.print(
                     "Would you prefer any extra toppings?\n" +
-                    "Cheese (+50)\n" + "Olives(+60)" + "Paneer (+70)\n" + "Chicken (+80)\n" + "None\n" +"Enter topping: ");
+                    "Cheese (+50)\n" + "Olives(+60)\n" + "Pineapple (+70)\n" + "Mushrooms (+80)\n" + "None\n" +"Enter topping: ");
 
                 String Cornextra = input.nextLine();
 
@@ -73,9 +73,9 @@ public class Main {
                     Corncost += 50;
                 } else if (Cornextra.equalsIgnoreCase("Olives")) {
                     Corncost += 60;
-                } else if (Cornextra.equalsIgnoreCase("Paneer")) {
+                } else if (Cornextra.equalsIgnoreCase("Pineapple")) {
                     Corncost += 70;
-                } else if (Cornextra.equalsIgnoreCase("Chicken")) {
+                } else if (Cornextra.equalsIgnoreCase("Mushrooms")) {
                     Corncost += 80;
                 }
             }
@@ -92,7 +92,7 @@ public class Main {
 
                 System.out.print(
                     "Would you prefer any extra toppings?\n" +
-                    "Cheese (+50)\n" + "Olives(+60)" + "Paneer (+70)\n" + "Chicken (+80)\n" + "None\n" +"Enter topping: ");
+                    "Cheese (+50)\n" + "Olives(+60)\n" + "Pineapple (+70)\n" + "Mushrooms (+80)\n" + "None\n" +"Enter topping: ");
 
                 String Pextra = input.nextLine();
 
@@ -102,9 +102,9 @@ public class Main {
                     Pcost += 50;
                 } else if (Pextra.equalsIgnoreCase("Olives")) {
                     Pcost += 60;
-                } else if (Pextra.equalsIgnoreCase("Paneer")) {
+                } else if (Pextra.equalsIgnoreCase("Pineapple")) {
                     Pcost += 70;
-                } else if (Pextra.equalsIgnoreCase("Chicken")) {
+                } else if (Pextra.equalsIgnoreCase("Mushrooms")) {
                     Pcost += 80;
                 }
             }
@@ -121,7 +121,7 @@ public class Main {
 
                 System.out.print(
                     "Would you prefer any extra toppings?\n" +
-                    "Cheese (+50)\n" + "Olives(+60)" + "Paneer (+70)\n" + "Chicken (+80)\n" + "None\n" +"Enter topping: ");
+                    "Cheese (+50)\n" + "Olives(+60)\n" + "Pineapple (+70)\n" + "Mushrooms (+80)\n" + "None\n" +"Enter topping: ");
 
                 String Cextra = input.nextLine();
 
@@ -131,9 +131,9 @@ public class Main {
                     Ccost += 50;
                 } else if (Cextra.equalsIgnoreCase("Olives")) {
                     Ccost += 60;
-                } else if (Cextra.equalsIgnoreCase("Paneer")) {
+                } else if (Cextra.equalsIgnoreCase("Pineapple")) {
                     Ccost += 70;
-                } else if (Cextra.equalsIgnoreCase("Chicken")) {
+                } else if (Cextra.equalsIgnoreCase("Mushrooms")) {
                     Ccost += 80;
                 }
             }
@@ -150,7 +150,7 @@ public class Main {
 
                 System.out.print(
                     "Would you prefer any extra toppings?\n" +
-                    "Cheese (+50)\n" + "Olives(+60)" + "Paneer (+70)\n" + "Chicken (+80)\n" + "None\n" +"Enter topping: ");
+                    "Cheese (+50)\n" + "Olives(+60)\n" + "Pineapple (+70)\n" + "Mushrooms (+80)\n" + "None\n" +"Enter topping: ");
 
                 String Bextra = input.nextLine();
 
@@ -160,9 +160,9 @@ public class Main {
                     Bcost += 50;
                 } else if (Bextra.equalsIgnoreCase("Olives")) {
                     Bcost += 60;
-                } else if (Bextra.equalsIgnoreCase("Paneer")) {
+                } else if (Bextra.equalsIgnoreCase("Pineapple")) {
                     Bcost += 70;
-                } else if (Bextra.equalsIgnoreCase("Chicken")) {
+                } else if (Bextra.equalsIgnoreCase("Mushrooms")) {
                     Bcost += 80;
                 }
             }
