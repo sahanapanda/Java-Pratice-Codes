@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
+        // Map to store row number -> bitmask representing reserved seats (2 through 9)
+        Map<Integer, Integer> occupied = new HashMap<>();
+
+        for (int[] seat : reservedSeats) {
+            int row = seat[0];
+            int col = seat[1];
+            // Seats 1 and 10 do not affect 4-person group allocations
+            if (col >= 2 && col <= 9) {
+                // Set the bit corresponding to (col - 2)
+                occupied.put(row, occupied.getOrDefault(row, 0) | (1 << (col - 2)));
+            }
+        }
+
+        // Bitmasks representing seat requirements for each block:
+        // Left block (seats 2, 3, 4, 5)  -> bits 0, 1, 2, 3 (0b00001111 = 15)
+        // Middle block (seats 4, 5, 6, 7)-> bits 2, 3, 4, 5 (0b00111100 = 60)
+        // Right block (seats 6, 7, 8, 9) -> bits 4, 5, 6, 7 (0b11110000 = 240)
+        int left = 15;
+        int middle = 60;
+        int right = 240;
+
+        // Any row without reserved seats in positions 2-9 can fit 2 families
+        int maxFamilies = (n - occupied.size()) * 2;
+
+        for (int bitmask : occupied.values()) {
+            boolean canFitLeft = (bitmask & left) == 0;
+            boolean canFitRight = (bitmask & right) == 0;
+
+            if (canFitLeft && canFitRight) {
+                // Can fit two groups in this row
+                maxFamilies += 2;
+            } else if (canFitLeft || canFitRight || (bitmask & middle) == 0) {
+                // Can fit at least one group (either left, right, or middle)
+                maxFamilies += 1;
+            }
+        }
+
+        return maxFamilies;
+    }
+}
