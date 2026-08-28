@@ -1,0 +1,99 @@
+import java.util.*;
+
+class Solution {
+    public String lexPalindromicPermutation(String s, String target) {
+        int n = s.length();
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        // Validate palindrome condition: at most one character can have an odd frequency
+        int oddCount = 0;
+        char midChar = 0;
+        for (int i = 0; i < 26; i++) {
+            if (count[i] % 2 != 0) {
+                oddCount++;
+                midChar = (char) ('a' + i);
+            }
+            count[i] /= 2; // Keep half for the left half construction
+        }
+
+        if (oddCount > 1) {
+            return "";
+        }
+
+        int halfLen = n / 2;
+        String tHalf = target.substring(0, halfLen);
+
+        // Case 1: Try matching the left half of 'target' as much as possible
+        int[] remaining = count.clone();
+        StringBuilder left = new StringBuilder();
+        int matchLen = 0;
+
+        for (int i = 0; i < halfLen; i++) {
+            char c = tHalf.charAt(i);
+            if (remaining[c - 'a'] > 0) {
+                remaining[c - 'a']--;
+                left.append(c);
+                matchLen++;
+            } else {
+                break;
+            }
+        }
+
+        // If full prefix match was possible, check the generated palindrome directly
+        if (matchLen == halfLen) {
+            String candidate = buildPalindrome(left.toString(), midChar);
+            if (candidate.compareTo(target) > 0) {
+                return candidate;
+            }
+        }
+
+        // Case 2: Backtrack to find the rightmost index where we can increment a character
+        while (left.length() >= 0) {
+            int i = left.length();
+            if (i < halfLen) {
+                int targetCharIdx = tHalf.charAt(i) - 'a';
+                for (int c = targetCharIdx + 1; c < 26; c++) {
+                    if (remaining[c] > 0) {
+                        // Place larger character at index i
+                        remaining[c]--;
+                        left.append((char) ('a' + c));
+                        
+                        // Fill remaining positions in smallest lexicographical order
+                        for (int r = 0; r < 26; r++) {
+                            while (remaining[r] > 0) {
+                                left.append((char) ('a' + r));
+                                remaining[r]--;
+                            }
+                        }
+                        return buildPalindrome(left.toString(), midChar);
+                    }
+                }
+            }
+
+            if (left.length() == 0) {
+                break;
+            }
+
+            // Undo the last matched character and try previous position
+            char popped = left.charAt(left.length() - 1);
+            left.deleteCharAt(left.length() - 1);
+            remaining[popped - 'a']++;
+        }
+
+        return "";
+    }
+
+    private String buildPalindrome(String leftHalf, char midChar) {
+        StringBuilder sb = new StringBuilder(leftHalf);
+        if (midChar != 0) {
+            sb.append(midChar);
+        }
+        for (int i = leftHalf.length() - 1; i >= 0; i--) {
+            sb.append(leftHalf.charAt(i));
+        }
+        return sb.toString();
+    }
+}
