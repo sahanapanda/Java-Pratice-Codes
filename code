@@ -1,0 +1,96 @@
+import java.util.*;
+
+class Solution {
+    public int[] maximumWeight(List<List<Integer>> intervals) {
+        int n = intervals.size();
+        
+        // Store interval info: {left, right, weight, original_index}
+        int[][] arr = new int[n][4];
+        for (int i = 0; i < n; i++) {
+            arr[i][0] = intervals.get(i).get(0);
+            arr[i][1] = intervals.get(i).get(1);
+            arr[i][2] = intervals.get(i).get(2);
+            arr[i][3] = i;
+        }
+
+        // Sort intervals by right endpoint
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[1], b[1]));
+
+        // dp[i][j]: max weight using at most j intervals from first i intervals
+        long[][] dp = new long[n + 1][5];
+        
+        // indices[i][j]: list of indices that form optimal choice
+        int[][][] indices = new int[n + 1][5][];
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= 5; j++) {
+                indices[i][j] = new int[0];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            int l = arr[i][0];
+            int weight = arr[i][2];
+            int idx = arr[i][3];
+
+            // Binary search for largest index ending strictly before l
+            int p = binarySearch(arr, i, l);
+
+            for (int j = 1; j <= 4; j++) {
+                // Option 1: Skip interval i
+                long s1 = dp[i][j];
+                int[] idx1 = indices[i][j];
+
+                // Option 2: Include interval i
+                long s2 = dp[p][j - 1] + weight;
+                int[] idx2 = combineAndSort(indices[p][j - 1], idx);
+
+                if (s2 > s1) {
+                    dp[i + 1][j] = s2;
+                    indices[i + 1][j] = idx2;
+                } else if (s1 > s2) {
+                    dp[i + 1][j] = s1;
+                    indices[i + 1][j] = idx1;
+                } else {
+                    // Tie-breaker: choose lexicographically smaller list of indices
+                    dp[i + 1][j] = s1;
+                    indices[i + 1][j] = compareArrays(idx1, idx2) <= 0 ? idx1 : idx2;
+                }
+            }
+        }
+
+        return indices[n][4];
+    }
+
+    private int binarySearch(int[][] arr, int rightLimit, int target) {
+        int low = 0, high = rightLimit - 1;
+        int ans = 0;
+        while (low <= high) {
+            int mid = (low + high) >>> 1;
+            if (arr[mid][1] < target) {
+                ans = mid + 1;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    private int[] combineAndSort(int[] prev, int newIdx) {
+        int[] res = new int[prev.length + 1];
+        System.arraycopy(prev, 0, res, 0, prev.length);
+        res[prev.length] = newIdx;
+        Arrays.sort(res);
+        return res;
+    }
+
+    private int compareArrays(int[] a, int[] b) {
+        int minLen = Math.min(a.length, b.length);
+        for (int i = 0; i < minLen; i++) {
+            if (a[i] != b[i]) {
+                return Integer.compare(a[i], b[i]);
+            }
+        }
+        return Integer.compare(a.length, b.length);
+    }
+}
