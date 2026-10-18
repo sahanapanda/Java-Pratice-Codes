@@ -11,7 +11,7 @@ class Solution {
 
         // Sort the array to use two pointers and skip duplicates easily
         Arrays.sort(nums);
-        int n = nums.length;
+        int n = nums.length; 
 
         // First pointer
         for (int i = 0; i < n - 3; i++) {
